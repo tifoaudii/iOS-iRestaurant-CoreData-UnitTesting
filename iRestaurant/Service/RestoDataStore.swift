@@ -28,7 +28,8 @@ class RestoDataStore: RestoServiceProtocol {
         }
     }
     
-    func addMenu(name: String, desc: String, price: Double) {
+    @discardableResult
+    func addMenu(name: String, desc: String, price: Double) -> Menu {
         let newMenu = Menu(context: context)
         newMenu.id = UUID()
         newMenu.name = name
@@ -36,10 +37,13 @@ class RestoDataStore: RestoServiceProtocol {
         newMenu.price = price
         
         coreDataStack.save(context)
+        return newMenu
     }
     
-    func updateMenu(menu: Menu) {
+    @discardableResult
+    func updateMenu(menu: Menu) -> Menu {
         coreDataStack.save(context)
+        return menu
     }
     
     func deleteMenu(menu: Menu) {

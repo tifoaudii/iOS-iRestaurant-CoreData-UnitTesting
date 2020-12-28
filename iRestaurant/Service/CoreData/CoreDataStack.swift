@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-final class CoreDataStack {
+class CoreDataStack {
     
     static let modelName = "Resto"
     
@@ -36,7 +36,7 @@ final class CoreDataStack {
     
     public func save(_ context: NSManagedObjectContext) {
         guard context == viewContext else {
-            saveBackgroundContext(backgroundContext())
+            saveBackgroundContext(context)
             return
         }
         
@@ -57,7 +57,7 @@ final class CoreDataStack {
                 fatalError("\(error.localizedDescription)")
             }
             
-            self.save()
+            self.save(self.viewContext)
         }
     }
 }

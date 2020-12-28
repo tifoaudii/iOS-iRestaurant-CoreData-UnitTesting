@@ -9,8 +9,8 @@ import Foundation
 
 protocol RestoServiceProtocol {
     func fetchMenu(completion: @escaping (_ menu: [Menu]) -> Void)
-    func addMenu(name: String, desc: String, price: Double)
-    func updateMenu(menu: Menu)
+    func addMenu(name: String, desc: String, price: Double) -> Menu
+    func updateMenu(menu: Menu) -> Menu
     func deleteMenu(menu: Menu)
 }
 

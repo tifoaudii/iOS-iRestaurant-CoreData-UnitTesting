@@ -22,11 +22,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let coreDataStack = CoreDataStack()
         let restoDataStore = RestoDataStore(context: coreDataStack.viewContext, coreDataStack: coreDataStack)
         
-        window?.rootViewController = ListMenuViewController(
-            service: RestoService(
-                dataStore: restoDataStore
+        let navigationController = UINavigationController(
+            rootViewController: ListMenuViewController(
+                service: RestoService(
+                    dataStore: restoDataStore
+                )
             )
         )
+        
+        window?.rootViewController = navigationController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
